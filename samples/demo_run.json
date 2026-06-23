@@ -1,0 +1,50 @@
+{
+  "run_id": "demo-eu-us-ai",
+  "status": "done",
+  "question": "Compare the 2025 EU and US approaches to AI regulation.",
+  "plan": [
+    "What does the EU AI Act regulate and when do its obligations apply?",
+    "What is the US federal approach to AI regulation in 2025?",
+    "How do the EU and US differ on risk-based rules vs sectoral/voluntary guidance?"
+  ],
+  "report_md": "# EU vs US AI Regulation in 2025\n\n## Overview\nThe EU and US took structurally different paths. The EU enacted a single, horizontal, risk-based law (the AI Act), while the US relied on a patchwork of executive action, agency guidance, and state laws rather than one comprehensive federal statute [1][3].\n\n## European Union\nThe EU AI Act classifies AI systems by risk tier (unacceptable, high, limited, minimal) and imposes the strictest obligations on high-risk systems [1]. Bans on certain 'unacceptable risk' practices began applying in early 2025, with obligations for general-purpose AI models phasing in through 2025 and high-risk requirements following later [1][2].\n\n## United States\nThe US in 2025 had no single comprehensive federal AI law; governance ran through executive orders, NIST frameworks, and sector-specific regulators, supplemented by a growing set of state laws [3][4]. This makes the US approach more fragmented and innovation-deferential than the EU's [3].\n\n## Key Differences\n- Legal form: one binding EU regulation vs a US patchwork of orders, guidance and state law [1][3].\n- Philosophy: EU is precautionary and risk-tiered; the US leans toward voluntary frameworks and existing sectoral authority [1][3].\n- The EU AI Act is widely described as the world's first comprehensive AI law [1].",
+  "sources": [
+    {"n": 1, "url": "https://artificialintelligenceact.eu/", "title": "EU AI Act overview", "snippet": "Risk-based rules for AI; first comprehensive AI law."},
+    {"n": 2, "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai", "title": "EU regulatory framework for AI", "snippet": "Timeline and obligations for high-risk and GPAI systems."},
+    {"n": 3, "url": "https://www.nist.gov/itl/ai-risk-management-framework", "title": "NIST AI Risk Management Framework", "snippet": "Voluntary US framework for managing AI risk."},
+    {"n": 4, "url": "https://www.congress.gov/", "title": "US legislative tracker", "snippet": "Status of federal AI-related bills."}
+  ],
+  "claims": [
+    {"text": "The EU enacted a single horizontal risk-based AI law while the US relied on a patchwork.", "cited_sources": [1, 3], "verdict": "supported", "confidence": 0.91, "rationale": "Both sources describe the EU's comprehensive law and the US's fragmented approach."},
+    {"text": "The EU AI Act classifies AI systems into risk tiers with strict rules for high-risk systems.", "cited_sources": [1], "verdict": "supported", "confidence": 0.95, "rationale": "Directly stated by the EU AI Act overview."},
+    {"text": "Bans on unacceptable-risk practices began applying in early 2025.", "cited_sources": [1, 2], "verdict": "supported", "confidence": 0.78, "rationale": "Supported by the EU framework timeline."},
+    {"text": "The US passed a single comprehensive federal AI statute in 2025.", "cited_sources": [], "verdict": "contradicted", "confidence": 0.88, "rationale": "Evidence indicates the US had no single comprehensive federal AI law in 2025; this claim was flagged and removed in revision."},
+    {"text": "The EU AI Act is the world's first comprehensive AI law.", "cited_sources": [1], "verdict": "supported", "confidence": 0.84, "rationale": "Stated in the EU AI Act overview."}
+  ],
+  "usage": {
+    "prompt_tokens": 18452,
+    "completion_tokens": 2961,
+    "total_tokens": 21413,
+    "cost_usd": 0.013234,
+    "calls": 11,
+    "latency_s": 27.4,
+    "by_node": {
+      "planner": {"prompt": 820, "completion": 180, "cost_usd": 0.000626, "calls": 1},
+      "synthesizer": {"prompt": 9100, "completion": 1900, "cost_usd": 0.006871, "calls": 2},
+      "critic": {"prompt": 8532, "completion": 881, "cost_usd": 0.005730, "calls": 8}
+    }
+  },
+  "log": [
+    "Planner: decomposing the question into sub-questions...",
+    "Planner: 3 sub-questions.",
+    "Search: collected 4 unique sources.",
+    "Reader: indexed 4 pages, 37 chunks total.",
+    "Synthesizer: drafted report with 5 claims.",
+    "Critic/Verifier: 1/5 claims need attention.",
+    "Synthesizer: writing the cited report (revision 1)...",
+    "Critic/Verifier: 0/5 claims need attention."
+  ],
+  "error": "",
+  "created_at": "2026-06-23T07:30:00+00:00",
+  "updated_at": "2026-06-23T07:30:28+00:00"
+}

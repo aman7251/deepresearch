@@ -1,0 +1,72 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build: .
+    command: uvicorn app.api:app --host 0.0.0.0 --port 8000
+    env_file: .env
+    environment:
+      - REDIS_URL=redis://redis:6379
+    ports:
+      - "8000:8000"
+    volumes:
+      - runs:/app/runs
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  worker:
+    build: .
+    command: arq app.worker.WorkerSettings
+    env_file: .env
+    environment:
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - runs:/app/runs
+      - hf-cache:/app/.huggingface
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  streamlit:
+    build: .
+    command: streamlit run app/ui_streamlit.py --server.address 0.0.0.0 --server.port 8501
+    env_file: .env
+    environment:
+      - API_BASE_URL=http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+
+  # Optional fully-local LLM backend. Enable with:  docker compose --profile ollama up
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["ollama"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+
+  # Optional standalone vector DB (the app uses embedded Chroma by default).
+  qdrant:
+    image: qdrant/qdrant:latest
+    profiles: ["qdrant"]
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant:/qdrant/storage
+
+volumes:
+  runs:
+  hf-cache:
+  ollama:
+  qdrant:

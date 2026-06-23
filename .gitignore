@@ -1,0 +1,52 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*_token*
+credentials*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual envs
+venv/
+.venv/
+env/
+
+# Local data / caches / models
+chroma/
+.chroma/
+runs/
+*.sqlite
+*.sqlite3
+.cache/
+models/
+*.gguf
+.huggingface/
+.sentence_transformers/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Transfer bundle / reassembly output (not part of the repo)
+ALL_FILES/
+*_rebuilt/
+
+# Anything from work — must never leak into this public repo
+work/
+*company*
+*corp*
+*internal*
